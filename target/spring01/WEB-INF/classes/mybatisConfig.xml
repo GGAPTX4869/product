@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="druid.properties">
+<!--        <property name="jdbc.name" value="root1"/>-->
+    </properties>
+    <settings>
+<!--        <setting name="" value=""/>-->
+<!--        一级-->
+<!--        <setting name="localCacheScope" value="SESSION"/>-->
+<!--       第一步： 二级缓存-->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+
+    <typeAliases>
+<!--        类型起别名-->
+<!--        <typeAlias type="com.igeekMybatis.entity.User1" alias="user1"/>-->
+<!--        指定包路径 别名默认是类型首字母小写-->
+        <package name="com.igeek.entity"/>
+    </typeAliases>
+
+    <!-- 和spring整合后 environments配置将废除 -->
+<!--    <environments default="development">-->
+<!--        <environment id="development">-->
+<!--            &lt;!&ndash; 使用jdbc事务管理 &ndash;&gt;-->
+<!--            <transactionManager type="JDBC" />-->
+<!--            &lt;!&ndash; 数据库连接池 &ndash;&gt;-->
+<!--            <dataSource type="POOLED">-->
+<!--                <property name="driver" value="${jdbc.driverClass}" />-->
+<!--                <property name="url" value="${jdbc.url}" />-->
+<!--&lt;!&ndash;                <property name="username" value="${jdbc.name}" />&ndash;&gt;-->
+<!--                <property name="username" value="${jdbc.username}" />-->
+<!--                <property name="password" value="${jdbc.password}" />-->
+<!--            </dataSource>-->
+<!--        </environment>-->
+<!--    </environments>-->
+<!--    指定映射文件位置-->
+    <mappers>
+<!--        要求接口类所在包跟xml所在文件夹路径保持名称一致-->
+<!--        <mapper class="UserDaoMapper.xml"/>-->
+<!--        <mapper resource="UserDaoMapper.xml"/>-->
+<!--      mapper resource xml文件路径  -->
+<!--        <mapper resource="com/igeekMybatis/dao/User1Mapper.xml"/>-->
+<!--      mapper class接口类的路径-->
+<!--        <mapper class="com.igeekMybatis.dao.User1Mapper"/>-->
+<!--      package name扫描包  -->
+        <package name="com.igeek.mapper"/>
+    </mappers>
+</configuration>

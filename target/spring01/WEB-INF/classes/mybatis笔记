@@ -1,0 +1,58 @@
+一、输入参数的映射
+1.简单类型 #{} ${value}
+2.pojo对象 #{属性} ${属性}
+3.pojo对象包装类   #{对象名.属性} ${对象名.属性}
+4.多个参数   @Param 、
+
+二、输出参数映射
+1.resulttype  处理简单值
+              pojo对象，属性名称跟查询出来的字段名称保持一致
+2.resultmap   别名映射   id  指定主键   result标签  column property
+              高级映射
+三、动态sql
+1.if test  条件判断  没有else
+2.where  默认省略第一个and
+3.set   默认省略最后一个逗号
+4.choose when otherwise   相当switch 只选择一个符合的
+5.foreach
+      collection被遍历的集合
+      item遍历的项目，临时变量
+      open 以什么开始
+      close以什么结束
+      separator 遍历项目之间的分隔符
+6.sql片段，将sql中重复的抽离出来， include refid 引用
+
+四、关联查询/高级映射
+1. 一对一  身份证
+   一对多  订单、订单详情
+   多对多  老师对应学生
+   多对一
+   <!--association 对一关系-->
+           <association property="user1" column="uid" select="com.igeekMybatis.dao.User1Mapper.selectById1"/>
+           <!--   collection 对多关系    property类中属性    column表间连接字段   select外部查询语句-->
+           <collection property="items" column="oid" select="com.igeekMybatis.dao.OrderItemMapper.selectByOid"/>
+ 五、缓存
+ 1.一级缓存
+     sqlsession级别
+     增删改对数据操作后，缓存失效
+ 2.二级缓存  优先命中
+     mapper级别
+     1.config setting  cacheanbled true
+     2.在mapper。xml  <cache/>  如果需要指定单个语句是否启用缓存  属性useCache  true/false
+     3.查询语句中 提交第一次查询的结果。session。commit
+     4.如果存放结果是pojo类型，该pojo类需要实现Serializable
+
+     LRU –  最近最少使用的：移除最长时间不被使用的对象。
+     FIFO –  先进先出：按对象进入缓存的顺序来移除它们。
+     SOFT –  软引用：移除基于垃圾回收器状态和软引用规则的对象。
+     WEAK –  弱引用：更积极地移除基于垃圾收集器状态和弱引用规则的对象。
+     默认的是 LRU。
+
+六、config配置
+1.settings
+2.typeAliases  别名映射
+            aliases
+            package 默认是类名首字母小写  小驼峰
+3.mappers   class
+            resource
+            package

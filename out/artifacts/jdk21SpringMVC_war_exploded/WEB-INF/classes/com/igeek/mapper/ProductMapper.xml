@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- ProductMapper.xml -->
+<mapper namespace="com.igeek.mapper.ProductDao">
+
+    <resultMap id="productResultMap" type="com.igeek.entity.Product">
+        <id property="id" column="id" />
+        <result property="name" column="name" />
+        <result property="price" column="price" />
+        <result property="createDate" column="createDate" />
+
+    </resultMap>
+
+<!--    <select id="getProductById" resultMap="productResultMap">-->
+<!--        SELECT * FROM product WHERE id = #{id}-->
+<!--    </select>-->
+
+    <insert id="saveProduct" parameterType="com.igeek.entity.Product">
+        INSERT INTO product (name, price, createDate) VALUES (#{name}, #{price}, #{createDate})
+    </insert>
+
+
+</mapper>

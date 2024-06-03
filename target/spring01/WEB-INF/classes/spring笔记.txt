@@ -1,0 +1,41 @@
+spring
+ioc：
+di:1.通过set 方法  property
+   2.提供构造方法：1.index   无法识别具体属性，按下标赋值，
+                    type   无法识别具体属性，按类型顺序赋值，
+                    name  最不容出错
+   3。p标签，开辟ns空间，
+   4.集合属性 list  set map prop
+实例化bean的四种方式：1.无参构造，
+                    2.静态工厂
+                    3.实例工厂，（日期格式化）
+                    4.factorybean
+
+ 作用域： scope  singleton 单例  prootype
+ bean生命周期： init-method指定初始化方法，destory-method指定销毁方法，随着apx容器创建初始化，随着容器的销毁而销毁
+ BeanPostProcessor: 默认是对所有被托管的bean对象做增强，可在后处理bean方法中指定bean
+
+ 注解  不指定名称时，默认是当前类名首字母小写
+ @component   无法明确区分层级的时候使用
+ @Repository 一般用于dao层，
+ @Service    一般用于service层
+ @Controller  一般用于action、controller
+
+ @Value 注入简单值，加在属性上，通过反射方式进行注入，  加在方法上，通过set方法注入
+@Autowired     Autowired根据类型注入，多态需搭配Qualifier使用
+@Qualifier     指定名称
+@Resource   可以根据类型注入,有重复类型时，根绝name属性指定名称
+@Scope    作用域 指定value值为singleton单例或者prototype多例，默认单例
+@PostConstruct  相当于xml中init-method属性，规定初始化方法
+@PreDestroy     相当于xml中destory-method属性，规定销毁方法
+
+aop:  切面  切入点 连接点  增强   织入  目标对象
+底层动态代理：
+jdk 基于接口 默认
+cglib  继承
+aop：
+  通知方式： before
+            after-returning
+            after-throwing   需要参数throwable
+            after
+            around  环绕需要参数ProceedingJoinpoint
